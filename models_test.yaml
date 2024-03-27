@@ -1,0 +1,110 @@
+models:
+  proton:
+
+    proton:d_n2lo:l_n2lo:s_n2lo:x_n2lo:
+      name: proton:d_n2lo:l_n2lo:s_n2lo:x_n2lo
+      particles: [proton,delta]
+      eps2a_defn: w0_imp
+      order_chiral: lo
+      order_disc: lo
+      order_strange: lo
+      order_light: lo
+      xpt: True
+      fv: True
+      units: fpi
+      emp_bayes: False
+      emp_bayes_grouping: null 
+      svd_test: False
+      svd_tol: null
+
+    proton:d_n2lo:l_lo:s_lo_fpi:
+      name: proton:d_n2lo:l_n2lo:s_lo
+      particles: [proton]
+      eps2a_defn: w0_imp
+      order_chiral: null
+      order_disc: n2lo
+      order_strange: lo
+      order_light: n2lo
+      xpt: False
+      fv: True
+      units: fpi
+      emp_bayes: False
+      emp_bayes_grouping: null 
+  xi:
+
+    xi:xi_st:d_n2lo:l_n2lo:s_n2lo:x_n2lo:
+      name: xi:xi_st:d_n2lo:l_n2lo:s_n2lo:x_n2lo
+      
+      particles: [xi, xi_st]
+      eps2a_defn: w0_imp
+      order_chiral: n2lo
+      order_disc: n2lo
+      order_strange: n2lo
+      order_light: n2lo
+      order_fpi: null
+      xpt: True
+      fv: True
+      units: phys
+      convert_data_before: False
+      emp_bayes: False
+      emp_bayes_grouping: null 
+      svd_test: False
+      svd_tol: null
+
+    xi:xi_st:d_n2lo:l_lo:
+      name: xi:xi_st:d_n2lo:l_lo
+      
+      particles: [xi, xi_st]
+      eps2a_defn: w0_imp
+      order_chiral: null
+      order_disc: n2lo
+      order_strange: null
+      order_light: lo
+      xpt: False
+      fv: True
+      units: fpi
+      convert_data_before: False
+      emp_bayes: False
+      emp_bayes_grouping: null 
+      svd_test: False
+      svd_tol: null
+
+    xi:xi_st:d_n2lo:l_n2lo:s_lo_phys:
+      name: xi:xi_st:d_n2lo:l_n2lo:s_lo
+      
+      particles: [xi, xi_st]
+      eps2a_defn: w0_imp
+      order_chiral: n2lo
+      order_disc: n2lo
+      order_strange: n2lo
+      order_light: n2lo
+      xpt: True
+      fv: True
+      units: phys
+      convert_data_before: False
+      emp_bayes: False
+      emp_bayes_grouping: null 
+      svd_test: False
+      svd_tol: null
+  lam:
+
+    lam:sigma:sigma_st:l_n2lo:d_n2lo:x_nlo:
+      name: lam:sigma:sigma_st:l_n2lo:d_n2lo:x_nlo
+      # particles : [lambda,sigma,sigma_st]
+      particles : [sigma,sigma_st,lambda]
+      eps2a_defn : w0_imp
+      order_chiral  : nlo
+      order_disc : n2lo
+      order_strange : null
+      order_light: n2lo
+      xpt : True
+      fv : True
+      units : phys
+      scheme: w0_imp
+      convert_data_before: False
+      emp_bayes: False
+      emp_bayes_grouping: null
+
+
+
+      

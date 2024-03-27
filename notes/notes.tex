@@ -1,0 +1,594 @@
+\documentclass[12pt,tightenlines, raggedbottom, prd, notitlepage]{revtex4-1}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{booktabs}
+\usepackage{hyperref} 
+\usepackage{graphicx}
+\allowdisplaybreaks[4]
+\def\tr{\text{tr}}
+\def\CPT{{$\chi$PT}}
+\def\c#1{{\mathcal #1}}
+\def\ol#1{{\overline{#1}}}
+
+
+\usepackage{latexsym}
+
+% Forces bold math in section/subsection/etc headings 
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
+
+
+\begin{document}
+
+
+\title{Pion mass dependence of the hyperon masses}
+\author{Nolan Miller, Grant Bradley}
+\maketitle
+
+\section{Introduction}
+In this work, we study the pion mass dependence of the hyperon masses up to $O(m_\pi^4)$ in the SU(2) Heavy Baryon \CPT expansion, including finite volume effects. \\
+
+\textit{can we go further to extract leading order sigma terms? with these, along with chiral limit masses, insert into GMO relation. from here, is it worth including fits to the GMO product correlator and chiral extrapolation?}
+
+\section{Hyperon Mass Formula}
+
+After we construct the SU(2) chiral lagrangian for all strangeness sectors, we can compute physical observables via extrapolation to the physical point. 
+
+In general, a hyperon mass can be written in terms of an expansion about the physical value of the pion mass and the chiral symmetry breaking scale:
+\begin{equation}
+  M_B = M_B^0 + c_B^2\frac{m_\pi^2}{\Lambda_\chi} + c_B^3\frac{m_\pi^3}{\Lambda_\chi^2} + c_B^4\frac{m_\pi^4}{\Lambda_\chi^3} + \dots
+\end{equation}
+
+At each chiral order, this expansion takes the form:
+
+\begin{equation}
+    M_H = M_H^{(\chi)} + \delta M_H^\text{disc} + \delta M_H^{q_s\ne q_s^*}
+\end{equation}
+where the discretization ($\delta M_H^\text{disc}$) and strange quark mass mistuning ($\delta M_H^{q_s\ne q_s^*}$) are given by, respectively,
+\begin{align}
+\delta M_H^\text{disc} &= M_H^{(0)} \big(
+    \overbrace{\epsilon_a^2}^\text{LO}
+    + \overbrace{d_{aa} \epsilon_a^4 
+    + d_{al} \epsilon_a^2 \epsilon_\pi^2}^\text{N$^2$LO}
+    + \cdots 
+\big) \, , \\
+\delta M_H^{q_s\ne q_s^*} &= M_H^{(0)} \big(
+    \overbrace{d_s \delta s_F^2}^\text{LO}
+    + \overbrace{d_{as} \delta s_F^2  \epsilon_a^2 
+    + d_{ls} \delta s_F^2  \epsilon_\pi^2
+    + d_{ss} \delta s_F^4}^\text{N$^2$LO}
+    + \cdots 
+\big) \, .
+\end{align}
+Notice that there is no NLO correction for either of these terms. However, such a term does exist in the chiral expansion.
+
+Below we concentrate on the chiral formula, which are given in \cite{Tiburzi:2008bk} (with redefinitions $\sigma_H \rightarrow \sigma_H / \sqrt{2}$ and $f_\pi \rightarrow F_\pi$ where $f_\pi= \sqrt{2} F_\pi$). For convenience we define the following variables
+\begin{align*}
+\Lambda_\chi &= 4 \pi F_\pi  \\
+\epsilon_\pi = \frac{m_\pi}{\Lambda_\chi} \qquad \epsilon_a &= \frac{a}{2w_0} \qquad \epsilon_{H_1 H_2}= \frac{m_{H_2}^{(0)} - m_{H_1}^{(0)}}{\Lambda_\chi}  \\
+s_F^2 = \frac{2m_K^2 -m_\pi^2}{\Lambda_\chi} &\qquad \delta s_F^2 = s_F^2 - (s_F^*)^2
+\end{align*}
+and non-analytic functions
+\begin{align}
+\mathcal{F}(\epsilon_\pi, \epsilon_\Delta, \mu) 
+&= -\epsilon_\Delta \left(\epsilon_\Delta^2 - \epsilon_\pi^2 \right) R\left( \frac{\epsilon_\pi^2}{\epsilon_\Delta^2}\right)
+- \frac{3}{2} \epsilon_\pi^2 \epsilon_\Delta \log \left( \epsilon_\pi^2 \frac{\Lambda_\chi^2}{\mu^2} \right)
+- \epsilon_\Delta^3 \log \left( 4 \frac{\epsilon_\Delta^2}{\epsilon_\pi^2} \right) \, ,\\
+\mathcal{J}(\epsilon_\pi, \epsilon_\Delta, \mu) &=
+\epsilon_\pi^2 \log \left( \epsilon_\pi^2 \frac{\Lambda_\chi^2}{\mu^2} \right)
++ 2\epsilon_\Delta^2 \log \left( 4 \frac{\epsilon_\Delta^2}{\epsilon_\pi^2} \right)
++ 2 \epsilon_\Delta^2 R\left( \frac{\epsilon_\pi^2}{\epsilon_\Delta^2}\right) \, ,\\
+R(x) &= \begin{cases} \label{eq:defn_r}
+\sqrt{1 - x} \log \left( \frac{1-\sqrt{1-x}}{1+\sqrt{1-x}}\right)\, , \qquad 0 < x \leq 1\\
+2 \sqrt{x - 1} \arctan\left( \sqrt{x - 1}\right) \, , \quad x > 1
+\end{cases} \, .
+\end{align}
+
+\subsection{$S=0$ nucleons \& $\Delta$ resonances}
+The nucleon:
+\begin{align*}
+    M_p^{(\chi)} = &\phantom{+}  M_p^{(0)} & \text{(LLO)} \\
+    &+ \beta^\text{(2)}_p \Lambda_\chi \epsilon_\pi^2 & \text{(LO)} \\
+    &- \frac{3\pi}{2} g_{\pi pp}^2 \Lambda_{\chi} \epsilon_\pi^3
+    - \frac{4}{3} g_{\pi p\Delta}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, \epsilon_{p\Delta}, \mu) & \text{(NLO)} \\
+    &+ \gamma_p^\text{(4)} \Lambda_\chi \epsilon_\pi^2 
+    \mathcal{J} (\epsilon_\pi, \epsilon_{p \Delta}, \mu) &\text{(N$^2$LO)} \\
+    &\qquad + \alpha_p^\text{(4)} \Lambda_{\chi} \epsilon_\pi^4 \log{\epsilon_\pi^2} + \beta_{p}^{(4)} \Lambda_\chi \epsilon_\pi^4
+\end{align*}
+
+The $\Delta$:
+\begin{align*}
+    M_\Delta^{(\chi)} = &\phantom{+}  M_\Delta^{(0)} & \text{(LLO)} \\
+    &+ \beta^\text{(2)}_\Delta \Lambda_\chi \epsilon_\pi^2 & \text{(LO)} \\
+    &- \frac{25\pi}{54} g_{\pi \Delta\Delta}^2 \Lambda_{\chi} \epsilon_\pi^3
+    - \frac{1}{3} g_{\pi p\Delta}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, -\epsilon_{p\Delta}, \mu) & \text{(NLO)} \\
+    &+ \gamma_\Delta^\text{(4)} \Lambda_\chi \epsilon_\pi^2 
+    \mathcal{J} (\epsilon_\pi, -\epsilon_{p \Delta}, \mu) &\text{(N$^2$LO)} \\
+    &\qquad + \alpha_\Delta^\text{(4)} \Lambda_{\chi} \epsilon_\pi^4 \log{\epsilon_\pi^2} + \beta_{\Delta}^{(4)} \Lambda_\chi \epsilon_\pi^4
+\end{align*}
+
+
+\subsection{$S=1$ hyperons}
+The $\Lambda$:
+
+\begin{align*}
+M_\Lambda^{(\chi)} = &\phantom{+}  M_\Lambda^{(0)} & \text{(LLO)} \\
+&+ \sigma_\Lambda \Lambda_\chi \epsilon_\pi^2 & \text{(LO)} \\
+&- \frac{1}{2} g_{\pi\Lambda\Sigma}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, \epsilon_{\Lambda\Sigma}, \mu)
+- 2 g_{\pi\Lambda\Sigma^*}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, \epsilon_{\Lambda\Sigma^*}, \mu) & \text{(NLO)} \\
+&+ \frac{3}{4} g_{\pi\Lambda\Sigma}^2 (\sigma_\Lambda - \sigma_\Sigma) \Lambda_\chi \epsilon_\pi^2 
+\mathcal{J} (\epsilon_\pi, \epsilon_{\Lambda\Sigma}, \mu) &\text{(N$^2$LO)} \\
+&\qquad + 3 g_{\pi\Lambda\Sigma^*}^2 (\sigma_\Lambda - \overline{\sigma}_\Sigma) \Lambda_\chi \epsilon_\pi^2  \mathcal{J} (\epsilon_\pi, \epsilon_{\Lambda\Sigma^*}, \mu) \\
+&\qquad + \alpha_\Lambda^\text{(4)} \Lambda_{\chi} \epsilon_\pi^4 \log{\epsilon_\pi^2} + \beta_{\Lambda}^{(4)} \Lambda_\chi \epsilon_\pi^4
+\end{align*}
+
+The $\Sigma$:
+\begin{align*}
+M_\Sigma^{(\chi)} = &\phantom{+} M_\Sigma^{(0)} & \text{(LLO)} \\
+&+ \sigma_\Sigma \Lambda_\chi \epsilon_\pi^2 & \text{(LO)} \\
+&- \pi g_{\pi\Sigma\Sigma}^2 \Lambda_{\chi} \epsilon_\pi^3 
+- \frac{1}{6} g_{\pi\Lambda\Sigma}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, -\epsilon_{\Lambda\Sigma}, \mu) &\text{(NLO)} \\
+&\qquad - \frac{2}{3} g_{\pi\Sigma^*\Sigma}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, \epsilon_{\Sigma\Sigma^*}, \mu)  \\
+&+ g_{\pi\Sigma^*\Sigma}^2 (\sigma_\Sigma - \overline{\sigma}_\Sigma) \Lambda_\chi \epsilon_\pi^2 
+\mathcal{J} (\epsilon_\pi, \epsilon_{\Sigma\Sigma^*}, \mu) &\text{(N$^2$LO)} \\
+&\qquad + \frac{1}{4} g_{\pi\Lambda\Sigma}^2 (\sigma_\Sigma - \sigma_\Lambda) \Lambda_\chi \epsilon_\pi^2 \mathcal{J} (\epsilon_\pi, -\epsilon_{\Lambda\Sigma}, \mu) \\
+&\qquad + \alpha_\Sigma^\text{(4)} \Lambda_{\chi} \epsilon_\pi^4 \log{\epsilon_\pi^2} + \beta_{\Sigma}^{(4)} \Lambda_\chi \epsilon_\pi^4
+\end{align*}
+
+The $\Sigma^*$:
+\begin{align*}
+M_{\Sigma^*}^{(\chi)} = &\phantom{+}  M_{\Sigma^*}^{(0)} & \text{(LLO)} \\
+&+ \overline{\sigma}_{\Sigma} \Lambda_\chi \epsilon_\pi^2 & \text{(LO)} \\
+&- \frac{5\pi}{9} g_{\pi\Sigma^*\Sigma^*}^2 \Lambda_{\chi} \epsilon_\pi^3 
+- \frac{1}{3} g_{\pi\Sigma^*\Sigma}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, -\epsilon_{\Sigma\Sigma^*}, \mu) &\text{(NLO)} \\
+&\qquad - \frac{1}{3} g_{\pi\Lambda\Sigma^*}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, -\epsilon_{\Lambda\Sigma^*}, \mu)  \\
+&+ \frac{1}{2} g_{\pi\Sigma^*\Sigma}^2 (\overline{\sigma}_\Sigma -\sigma_\Sigma) \Lambda_\chi \epsilon_\pi^2 \mathcal{J} (\epsilon_\pi, -\epsilon_{\Sigma\Sigma^*}, \mu) &\text{(N$^2$LO)} \\
+&\qquad + \frac{1}{2} g_{\pi\Lambda\Sigma^*}^2 (\overline{\sigma}_\Sigma -\sigma_\Sigma) \Lambda_\chi \epsilon_\pi^2 \mathcal{J} (\epsilon_\pi, -\epsilon_{\Lambda\Sigma^*}, \mu) \\
+&\qquad + \alpha_{\Sigma^*}^\text{(4)} \Lambda_{\chi} \epsilon_\pi^4 \log{\epsilon_\pi^2} + \beta_{\Sigma^*}^{(4)} \Lambda_\chi \epsilon_\pi^4
+\end{align*}
+
+\subsection{$S=2$ hyperons}
+
+The $\Xi$:
+
+\begin{align*}
+M_\Xi^{(\chi)} = &\phantom{+}  M_\Xi^{(0)} & \text{(LLO)} \\
+&+ \sigma_\Xi \Lambda_\chi \epsilon_\pi^2 & \text{(LO)} \\
+&- \frac{3\pi}{2} g_{\pi\Xi\Xi}^2 \Lambda_{\chi} \epsilon_\pi^3
+- g_{\pi\Xi^*\Xi}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, \epsilon_{\Xi\Xi^*}, \mu) & \text{(NLO)} \\
+&+ \frac{3}{2} g_{\pi\Xi^*\Xi}^2 (\sigma_\Xi - \overline{\sigma}_\Xi ) \Lambda_\chi \epsilon_\pi^2 
+\mathcal{J} (\epsilon_\pi, \epsilon_{\Xi\Xi^*}, \mu) &\text{(N$^2$LO)} \\
+&\qquad + \alpha_\Xi^\text{(4)} \Lambda_{\chi} \epsilon_\pi^4 \log{\epsilon_\pi^2} + \beta_{\Xi}^{(4)} \Lambda_\chi \epsilon_\pi^4
+\end{align*}
+
+The $\Xi^*$:
+
+\begin{align*}
+M_{\Xi^*}^{(\chi)} = &\phantom{+}  M_{\Xi^*}^{(0)} & \text{(LLO)} \\
+&+ \overline{\sigma}_\Xi \Lambda_\chi \epsilon_\pi^2 & \text{(LO)} \\
+&- \frac{5\pi}{6} g_{\pi\Xi^*\Xi^*}^2 \Lambda_{\chi} \epsilon_\pi^3
+- \frac{1}{2} g_{\pi\Xi^*\Xi}^2 \Lambda_{\chi} \mathcal{F}(\epsilon_\pi, -\epsilon_{\Xi\Xi^*}, \mu) & \text{(NLO)} \\
+&+ \frac{3}{4} g_{\pi\Xi^*\Xi}^2 (\overline{\sigma}_\Xi -\sigma_\Xi ) \Lambda_\chi \epsilon_\pi^2 
+\mathcal{J} (\epsilon_\pi, -\epsilon_{\Xi\Xi^*}, \mu) &\text{(N$^2$LO)} \\
+&\qquad + \alpha_{\Xi^*}^\text{(4)} \Lambda_{\chi} \epsilon_\pi^4 \log{\epsilon_\pi^2} + \beta_{\Xi^*}^{(4)} \Lambda_\chi \epsilon_\pi^4
+\end{align*}
+
+\subsection{$S=3$ hyperon}
+
+The $\Omega$ (notice the LECs have been renamed compared to \cite{Tiburzi:2008bk}):
+
+\begin{align*}
+M_{\Omega}^{(\chi)} = &\phantom{+} M_\Omega^{(0)} &\text{(LLO)} \\
+&+ \overline{\sigma}_\Omega \Lambda_\chi \epsilon_\pi^2 & \text{(LO)} \\
+&+ 0 & \text{(NLO)} \\
+&+ \beta_\Omega^{(4)} \Lambda_\chi \epsilon_\pi^4 
+-\left(6 \overline{\sigma}_\Omega + 3 t_\Omega^A \right)\Lambda_\chi \epsilon_\pi^4 \log \epsilon_\pi^2
+& \text{(N$^2$LO)} \\
+&+ 0 & \text{(N$^3$LO)} \\
+&+ \beta_\Omega^{(6)} \Lambda_\chi \epsilon_\pi^6 
++ \alpha_\Omega^{(6)} \Lambda_\chi \epsilon_\pi^6  \log \epsilon_\pi^2
+& \text{(N$^4$LO)} \\
+&\qquad + \left(28 \overline{\sigma}_\Omega + 22 t_\Omega^A  \right)\Lambda_\chi \epsilon_\pi^6  \left(\log \epsilon_\pi^2 \right)^2
+\end{align*}
+
+\section{Extrapolation Details}
+
+\subsection{Priors}
+We prior the axial charges using the values from \cite{Jiang:2009sf} with a width equal to $20\%$ of the quoted value. Alternatively, one might instead use more recent lattice calulations of the axial charges, eg those given in \cite{Alexandrou:2016xok}.
+
+\begin{table}[]
+    \begin{tabular}{lr|l}
+    Charge                    & Value   & Source\\ \hline
+    $g_{\pi\Lambda\Sigma}$    & 1.29    & SU(2)\\
+    $g_{\pi\Lambda\Sigma^*}$  & $-0.91$ & Expt. \\
+    $g_{\pi\Sigma\Sigma}$     & 0.73    & SU(2)\\
+    $g_{\pi\Sigma^*\Sigma}$   & 0.76    & Expt. \\
+    $g_{\pi\Sigma^*\Sigma^*}$ & $-1.47$ & SU(3)\\ \hline
+    $g_{\pi\Xi\Xi}$           & 0.23    & SU(2)\\
+    $g_{\pi\Xi^*\Xi}$         & 0.69    & Expt. \\
+    $g_{\pi\Xi^*\Xi^*}$       & $-0.73$ & SU(3)     
+    \end{tabular}
+    \caption{Predicted/measured values of the axial charges per \cite{Jiang:2009sf}. The ``SU(3)'' predictions are obtained by three-flavor heavy baryon $\chi$PT as outlined in \cite{Butler:1992pn}, while the ``SU(2)'' predictions use two-flavor heavy baryon $\chi$PT as outlined in \cite{Jiang:2009sf}. }
+\end{table}
+
+\subsection{Model Averaging}
+We follow the same general procedure as described in \cite{Chang:2018uxx,Miller:2020xhy} and with greater detail in \cite{Jay:2020jkz}. However, in those references only the average and variance are considered. Since we are also interested in using our extrapolated values of the hyperon masses to test relations from the $1/N_c$ expansion, we must also account for the correlation between hyperon masses. The variance is insufficient in this case.
+
+Instead we must compute the model-averaged covariance matrix. Suppose $A$ and $B$ are statistics computed on models $\{M_k\}$ (eg, $A=M_\Xi$, $B=M_{\Xi^*}$, and $M_k=$ ``a simultaneous fit of $M_\Xi$ and $M_{\Xi^*}$ to N$^2$LO in the $\chi$PT expansion"). Then the model-averaged covariance between $A$ and $B$ is given by 
+\begin{align*}
+\text{Cov}\left[A, B\right] &= \braket{AB} - \braket{A}\braket{B} \\ %
+&= \sum_k \braket{AB}_k p(M_k | D) 
+- \left(  \sum_k \braket{A}_k p(M_k | D) \right) \left(  \sum_k \braket{B}_k p(M_k | D) \right) \\
+&= \sum_k \text{Cov}[A,B]_k \, p(M_k | D) 
++ \sum_k \braket{A}_k \braket{B}_k p(M_k | D)\\
+&\qquad - \left(  \sum_k \braket{A}_k p(M_k | D) \right) \left(  \sum_k \braket{B}_k p(M_k | D) \right) 
+\end{align*}
+where $\braket{X}_k$ is the expectation value of $X$ on $M_k$. Notice that when $A=B$ this expression reduces to the variance expression in the references.
+
+Finally, we add a caveat about weights. The normalized Bayes factors $p(M_k | D)$ (``the weights'') can only be compared for models sharing the same response data $D$. In practice, this means that we can only compute the weights for models that were fit simultaneously. In principle $\text{Cov}[M_{\Lambda}, M_{\Omega}]$, for example, needn't be 0 (since the fits share the same set of explanatory data), but this covariance is comparably small and can be approximated as such. We expect the bulk of the correlation to arise from shared LECs.
+
+
+\section{Nucleon Sigma Term}
+The nucleon sigma term can be calculated from the nucleon mass. To wit, 
+\begin{equation}
+\sigma_{\pi N} = \hat m \frac{\partial M_N}{\partial \hat m} \, .
+\end{equation}
+We would like to rewrite this derivative in terms of $m_\pi$, or more conveniently yet, $\epsilon_\pi$. As a starting point, we can of course write 
+\begin{equation}
+\hat m \frac{\partial M_N}{\partial \hat m} = \hat m \frac{\partial m_\pi^2}{\partial \hat m}\frac{\partial M_N}{\partial m_\pi^2} \, .
+\end{equation}
+To NLO, the pion mass can be perturbatively related to $\hat m$ by
+\begin{equation}
+m_\pi^2 \approx 2 B \hat m \left( 1 + \delta_{m^2} \right) 
+\quad \implies \quad
+\hat m  \approx \frac{m_\pi^2}{2 B}  \left( 1 - \delta_{m^2} \right)
+\end{equation}
+where $\delta_{m^2}$ is the NLO correction. Therefore to NLO
+\begin{align}
+\hat m \frac{\partial m_\pi^2}{\partial \hat m}\ &\approx \frac{m_\pi^2}{2 B}  \left( 1 - \delta_{m^2} \right) \frac{\partial}{\partial \hat m} \Big[ 2 B \hat m \left( 1 + \delta_{m^2} \right) \Big] \nonumber \\
+&= m_\pi^2 \Big( 1 - \delta_{m^2} \Big) \Big( 1 + \delta_{m^2} + \hat m \frac{\partial \delta_{m^2}}{\partial \hat m} \Big) \nonumber \\
+&\approx m_\pi^2 \left( 1 + \hat m \frac{\partial \delta_{m^2}}{\partial \hat m} \right)
+\end{align}
+
+At this point we need the expression for $\delta_{m^2}$,
+\begin{equation}
+\delta_{m^2} = \frac{1}{2} \frac{2 B \hat m}{(4 \pi F)^2} \left[ \log \left(\frac{2B\hat m}{\mu^2} \right) + 4 \overline l_3^r (\mu) \right] \, , 
+\end{equation}
+which has partial derivative 
+\begin{table}[]
+    \begin{tabular}{cccc} 
+    $\quad \gamma_1 = \frac 13 \quad$ & $\quad \gamma_2 = \frac 23 \quad$ & $\quad \gamma_3 = -\frac 12 \quad$ & $\quad \gamma_4 = 2 \quad$
+    \end{tabular}
+    \caption{Coefficients for \eqref{eq:l_renom_to_bar}.}
+    \label{tab:l_renom_to_bar}
+\end{table}
+\begin{align}
+\frac{\partial \delta_{m^2}}{\partial \hat m} &= \frac{1}{2} \frac{2 B }{(4 \pi F)^2} \left[ \log \left(\frac{2B\hat m}{\mu^2} \right) + 1 + 4 \overline l_3^r (\mu) \right] 
+\nonumber \\ 
+&\approx \frac{1}{2} \frac{2 B }{(4 \pi F)^2} \left[ \log \left(\frac{2B\hat m}{\mu^2} \right) + 1  - \left( \overline l_3  + \log \frac{m_\pi^2}{\mu^2} \right) \right]
+\nonumber \\
+&\approx \frac{1}{2} \frac{2 B }{(4 \pi F)^2} \left( 1 - \overline l_3 \right)
+\nonumber \\
+&\approx \frac{1}{2} \frac{\epsilon_\pi^2}{\hat m} \left( 1 - \overline l_3 \right) 
+\end{align}
+where in the second line we have related the renomalized LEC $\overline l_3^r(\mu)$ to the barred LEC $\overline l_3$ by 
+\begin{equation} \label{eq:l_renom_to_bar}
+\overline l_i^r = \frac{\gamma_i}{2} \left[ \overline l_i + \log \left( \frac{m_\pi^2}{\mu^2}\right) \right]\, 
+\end{equation}
+(the coefficients $\gamma_i$ are given in Table \ref{tab:l_renom_to_bar}); in the third line we have combined the logarithms by rounding to NLO; and in the fourth line we have rounded to NLO again after approximating $2 B \hat m \approx m_\pi^2$ and $F \approx F_\pi$. 
+
+Putting everything together, we get an expression for the nucleon sigma term to NLO that doesn't explicitly depend on $\hat m$,
+\begin{equation}
+\sigma_{\pi N} 
+\approx m_\pi^2 \left[ 1 + \frac 12 \epsilon_\pi^2 \left(1 - \overline l_3 \right) \right] \frac{\partial M_N}{\partial m_\pi^2} \, .
+\end{equation}
+
+Next we would like to rewrite the derivative with respect to $\epsilon_\pi$ instead of $m_\pi^2$. Rewriting the derivative as
+\begin{equation}
+\frac{\partial M_N}{\partial m_\pi^2} = \frac{1}{2 \epsilon_\pi} \frac{\partial \epsilon_\pi^2}{\partial m_\pi^2} \frac{\partial M_N}{\partial \epsilon_\pi}  \, ,
+\end{equation}
+we find that we must calculate
+\begin{equation}
+\frac{\partial \epsilon_\pi^2}{\partial m_\pi^2} 
+= \frac{1}{(4 \pi F_\pi^2)} \left[ 1 - 2 \frac{m_\pi^2}{F_\pi} \frac{\partial F_\pi}{\partial m_\pi^2} \right] \, .
+\end{equation}
+
+At this point it's evident that we also require the partial derivative $\partial F_\pi / \partial m_\pi^2$. The chiral expression for $F_\pi$ to NLO is 
+\begin{equation}
+F_\pi \approx F (1 + \delta_F) \quad \implies  \quad F \approx F_\pi (1 - \delta_F)
+\end{equation}
+where 
+\begin{equation}
+\delta_F = \frac{2 B \hat m}{(4 \pi F)^2} \left[ -\log \left( \frac{2 B \hat m}{\mu^2} \right) + \overline l_4^r (\mu) \right]
+\end{equation}
+so 
+\begin{align}
+\frac{\partial F_\pi}{\partial m_\pi^2} &\approx F \frac{\partial \delta_F}{\partial m_\pi^2}
+\nonumber \\
+&\approx F \frac{\partial}{\partial m_\pi^2} \left\{ \frac{m_\pi^2}{(4 \pi F)^2} \left[ -\log \left( \frac{m_\pi^2}{\mu^2} \right) + \overline l_4^r (\mu) \right] \right\} 
+\nonumber \\
+&= F \frac{1}{(4\pi F)^2} \left[ -1 -\log \left( \frac{m_\pi^2}{\mu^2} \right)  + \overline l_4^r (\mu)  \right] 
+\nonumber \\
+&= F \frac{1}{(4\pi F)^2} \left[ -1 -\log \left( \frac{m_\pi^2}{\mu^2} \right)  + \left(\overline l_4 + \log \left( \frac{m_\pi^2}{\mu^2}\right) \right) \right] \nonumber \\
+&= F \frac{1}{(4\pi F)^2} \left( -1 + \overline l_4 \right) \nonumber \\
+&\approx F_\pi \frac{\epsilon_\pi^2}{m_\pi^2} \left( -1 + \overline l_4 \right) \, .
+\end{align}
+
+Now we see that
+\begin{align}
+\frac{\partial \epsilon_\pi^2}{\partial m_\pi^2} 
+&=  \frac{1}{(4 \pi F_\pi^2)} \left[ 1 - 2 \frac{m_\pi^2}{F_\pi} \frac{\partial F_\pi}{\partial m_\pi^2} \right] \nonumber \\
+&\approx  \frac{1}{(4 \pi F_\pi^2)} \left[ 1 + 2 \epsilon_\pi^2 \left(1 - \overline l_4 \right) \right]
+\end{align}
+which yields the desired result
+\begin{align} \label{eq:sigma_term_eps}
+\sigma_{\pi N} &\approx
+\frac 12 \epsilon_\pi \Big[ 1 + \frac 12 \epsilon_\pi^2 \left(1 - \overline l_3 \right) \Big] 
+\Big[ 1 + 2 \epsilon_\pi^2 \left(1 - \overline l_4 \right) \Big] \frac{\partial M_N}{\partial \epsilon_\pi}\nonumber \\
+&\approx \frac 12 \epsilon_\pi \left[ 1 + \epsilon_\pi^2 \left( \frac 52 - \frac 12 \overline l_3 - 2 \overline l_4 \right) \right] \frac{\partial M_N}{\partial \epsilon_\pi} \, .
+\end{align}
+
+
+\subsection{Expanding the nucleon mass derivative}
+
+We expand $\epsilon_\pi (\partial M_N / \partial \epsilon_\pi)$ by order for use in \eqref{eq:sigma_term_eps}.
+
+\begin{align*}
+    \epsilon_\pi \frac{M_p^{(\chi)}}{\partial \epsilon_\pi }  = &\phantom{+}  0 & \text{(LLO)} \\
+    &+ \beta^\text{(2)}_p \epsilon_\pi \Big[
+        (\partial_{\epsilon_\pi}\Lambda_\chi) \epsilon_\pi^2
+        + 2\Lambda_\chi \epsilon_\pi 
+    \Big] & \text{(LO)} \\
+    &- \frac{3\pi}{2} g_{\pi pp}^2 \epsilon_\pi \Big[
+        (\partial_{\epsilon_\pi}\Lambda_\chi)  \epsilon_\pi^3
+        + 3 \Lambda_\chi \epsilon_\pi^2 
+    \Big] & \text{(NLO)} \\
+    &\qquad - \frac{4}{3} g_{\pi p\Delta}^2 \epsilon_\pi \Big[
+        (\partial_{\epsilon_\pi}\Lambda_\chi) \mathcal{F}(\epsilon_\pi, \epsilon_{p\Delta})
+        +\Lambda_\chi \partial_{\epsilon_\pi}\mathcal{F}(\epsilon_\pi, \epsilon_{p\Delta}) 
+    \Big] \\
+    &+ \gamma_p^\text{(4)} \epsilon_\pi \Big[
+        (\partial_{\epsilon_\pi} \Lambda_\chi)\epsilon_\pi^2 \mathcal{J} (\epsilon_\pi, \epsilon_{p \Delta})   + 2 \Lambda_\chi \epsilon_\pi \mathcal{J} (\epsilon_\pi, \epsilon_{p \Delta}) + \Lambda_\chi \epsilon_\pi^2 \partial_{\epsilon_\pi} \mathcal{J} (\epsilon_\pi, \epsilon_{p \Delta}) 
+    \Big] &\text{(N$^2$LO)}  \\
+    &\qquad + \alpha_p^\text{(4)} \epsilon_\pi \Big[
+        (\partial_{\epsilon_\pi} \Lambda_{\chi}) \epsilon_\pi^4 \log{\epsilon_\pi^2} 
+        + 4 \Lambda_\chi \epsilon_\pi^3 \log{\epsilon_\pi^2} 
+        + 2 \Lambda_\chi \epsilon_\pi^3
+    \Big] \\
+    &\qquad + \beta_{p}^{(4)} \epsilon_\pi \Big[ 
+        (\partial_{\epsilon_\pi} \Lambda_\chi) \epsilon_\pi^4
+        + 4\Lambda_\chi \epsilon_\pi^3
+    \Big]
+\end{align*}
+
+Here $\Lambda_\chi = 4 \pi F_\pi$ and $\partial_{\epsilon_\pi}\Lambda_\chi$ should be expanded to the appropriate order when truncatating this expression. The derivatives of the special functions $\mathcal J, \mathcal F$ are given below for renomalization cutoff $\mu = 4\pi F_\pi$.
+
+\begin{align}
+\frac{\partial \mathcal F}{\partial \epsilon_\pi}
+& = \frac{2 \epsilon_\Delta ^3}{\epsilon_\pi }
+-3 \epsilon_\Delta  \epsilon_\pi  \log \left(\epsilon_\pi ^2\right)
+-3 \epsilon_\Delta  \epsilon_\pi +\left(\frac{2 \epsilon_\pi ^3}{\epsilon_\Delta }
+-2 \epsilon_\Delta  \epsilon_\pi \right) R'\left(\frac{\epsilon_\pi ^2}{\epsilon_\Delta ^2}\right)
++2 \epsilon_\Delta  \epsilon_\pi  R\left(\frac{\epsilon_\pi ^2}{\epsilon_\Delta ^2}\right)
+\\
+\frac{\partial \mathcal J}{\partial \epsilon_\pi}
+&= -\frac{4 \epsilon_\Delta ^2}{\epsilon_\pi }+4 \epsilon_\pi  R'\left(\frac{\epsilon_\pi ^2}{\epsilon_\Delta ^2}\right)+2 \epsilon_\pi  \log \left(\epsilon_\pi ^2\right)+2 \epsilon_\pi
+\\
+R'(x) &=\begin{array}{cc}
+    &  
+    \left\{ \begin{array}{cc}
+    \frac{1}{x}-\frac{\log \left(\frac{1-\sqrt{1-x}}{\sqrt{1-x}+1}\right)}{2 \sqrt{1-x}} & 0<x<1 \\
+    2 & x=1 \\
+    \frac{1}{x}+\frac{\tan ^{-1}\left(\sqrt{x-1}\right)}{\sqrt{x-1}} & x>1 \\
+   \end{array} \right.
+    \\ 
+   \end{array}
+\end{align}
+Recall that $R$ is defined in \eqref{eq:defn_r}.
+
+
+\section{Mass splittings in the $1/N_c$ expansion}
+See references: \cite{Dashen:1993jt, Jenkins:1995td}.
+
+
+
+\bibliography{references}
+
+\appendix
+
+\section{Nucleon \& $\Delta$ details}
+\subsection{Nucleon}
+See reference \cite{Tiburzki:2006}. The mass of the $i^\text{th}$ nucleon in the chiral expansion can be written as
+\begin{align*}
+M_{B_i} = M_0 \left(\epsilon_\Delta \right) - 
+M_{B_i}^{(1)}\left(\mu, \epsilon_\Delta \right)
+- M_{B_i}^{(3/2)}\left(\mu, \epsilon_\Delta \right)
+- M_{B_i}^{(2)}\left(\mu, \epsilon_\Delta \right) + \dots
+\end{align*}
+
+LO contributions:
+\begin{align*}
+M^{(1)}_B 
+= 2 \alpha_M m_B + 2 \sigma_M \tr(m_q),
+\end{align*}
+where
+\begin{equation}\label{eq:mB}
+  m_B = \left\{
+    \begin{array}{lc}
+      m_u, & B=p \\
+      m_d, & B=n
+    \end{array}\right. .
+\end{equation}
+
+NLO contributions:
+\begin{equation}
+  M^{(3/2)}_B = 
+  \frac{3\pi}{2} g_A^2 \Lambda_\chi \epsilon_\pi^3 
+    + \frac{4}{3} g_{\Delta N}^2 \Lambda_\chi \c{F} (\epsilon_\pi,\epsilon_\Delta,\mu)
+,
+\end{equation}
+
+\text{N$^2$LO} contributions:
+\begin{eqnarray}
+M_B^{(2)} &=& ( Z_B - 1) M_B^{(1)} 
+  + \frac{1}{\Lambda_\chi} \left\{
+    b_1^M \, (m_B)^2 + b_5^M \, \tr (m_q^2) + b_6^M \, m_B \, \tr(m_q)
+    + b_8^M \, [\tr(m_q)]^2 \right\} \notag \\
+&& 
+  - \frac{1}{\Lambda_\chi^2} C^B_\pi \c{L} (\epsilon_\pi,\mu) 
+    - \frac{6 \sigma_M}{\Lambda_\chi^2} \, \tr(m_q)\,  \c{L} (\epsilon_\pi,\mu) \notag \\
+&& 
+  + \frac{3\, b^A}{\Lambda_\chi^3} \ol{\c{L}} (\epsilon_\pi, \mu) 
+    + \frac{3\, b^{vA}}{4\Lambda_\chi^3} \left[\ol{\c{L}} (\epsilon_\pi, \mu) - \frac{1}{2} m_\pi^4 \right] \notag \\
+&& 
+  + \frac{1}{\Lambda_\chi^2} \frac{27 g_A^2}{16 M_B} 
+     \left[\ol{\c{L}} (\epsilon_\pi, \mu) + \frac{5}{6} m_\pi^4 \right]
+    + \frac{1}{\Lambda_\chi^2} \frac{5 g_{\Delta N}^2}{2 M_B}
+     \left[\ol{\c{L}} (\epsilon_\pi, \mu) + \frac{9}{10} m_\pi^4 \right] \notag \\
+&& 
+  + \frac{ 9 g_A^2 \sigma_M }{\Lambda_\chi^2} \tr (m_q) 
+     \left[ \c{L} (\epsilon_\pi, \mu) + \frac{2}{3} m_\pi^2 \right] 
+    + \frac{8 g_{\Delta N}^2 \sigma_M }{\Lambda_\chi^2} \tr(m_q)
+     \left[ \c{J} (\epsilon_\pi, \Delta, \mu) + m_\pi^2 \right] \notag \\
+&& 
+  + \frac{3g_A^2}{\Lambda_\chi^2} F^B_\pi \left[ \c{L} (\epsilon_\pi, \mu) + \frac{2}{3} m_\pi^2 \right]
+     - \frac{2 g_{\Delta N}^2}{\Lambda_\chi^2} \gamma_M G^B_\pi
+     \left[ \c{J} (\epsilon_\pi, \epsilon_\Delta, \mu) + m_\pi^2 \right] 
+.\label{e:MBNNLO} \end{eqnarray}
+%
+The wavefunction renormalization $Z_B$ is given by
+\begin{equation}
+  Z_B - 1 = 
+     - \frac{9 g_A^2}{2\Lambda_\chi^2} \left[  \c{L}(\epsilon_\pi , \mu) +
+       \frac{2}{3} m_\pi^2 \right]
+     - \frac{4 g_{\Delta N}^2}{\Lambda_\chi^2 } \left[ \c{J}(\epsilon_\pi, \epsilon_\Delta, \mu) +
+       m_\pi^2 \right]
+.\label{e:ZB} 
+\end{equation}
+
+\begin{table}
+    \caption{The coefficients $C_\pi^B$, $F_\pi^B$, and $G_\pi^B$ in \CPT.}
+    %\begin{ruledtabular}
+    \begin{tabular}{l | c c c }
+     & $\quad \quad \quad \quad C_\pi^B \quad \quad \quad \quad $  
+     & $\quad \quad \quad \quad F_\pi^B \quad \quad \quad \quad$ 
+     & $\quad \quad \quad \quad G_\pi^B  \quad \quad \quad \quad$ \\
+    \hline
+    $p$
+     & $2 \alpha_M (\sqrt{3}m_\pi^2)$ 
+     & $\alpha_M (\sqrt{3}m_\pi^2)$ 
+     & $\frac{4}{9} (\sqrt{2}m_\pi^2)$    \\
+    $n$
+     & $2 \alpha_M (\sqrt{2}m_\pi^2)$ 
+     & $\alpha_M (\sqrt{2}m_\pi^2)$ 
+     & $\frac{4}{9} (\sqrt{2}m_\pi^2)$    \\
+     \end{tabular}
+    %\end{ruledtabular}
+    \label{t:NQCD-C}
+    \end{table}
+
+Non-analytic functions arising from 
+loop contributions:
+\begin{align}
+\c{L} (\epsilon,\mu) &= \epsilon^2 \log \frac{\epsilon^2}{\mu^2}, \\
+\ol{\c{L}} (\epsilon,\mu) &= \epsilon^4 \log \frac{\epsilon^2}{\mu^2}
+\end{align}
+
+
+\subsection{Delta}
+See reference \cite{Tiburzki:2006}. The mass of the $i^\text{th}$ delta in the chiral expansion can be written as
+\begin{align*}
+M_{T_i} = M_0 \left(\Delta \right) + \Delta +  M_{T_i}^{(1)}\left(\mu, \Delta \right)
++ M_{T_i}^{(3/2)}\left(\mu, \Delta \right)
++ M_{T_i}^{(2)}\left(\mu, \Delta \right) + \ldots
+\label{eq:Tmassexp}
+\end{align*}
+
+Here, $M_0 \left(\Delta \right)$ is the renormalized nucleon mass 
+in the chiral limit and $\Delta$ is the renormalized nucleon-delta mass splitting in the chiral limit. 
+Both of these quantities are independent of $m_q$ and also of the $T_i$.
+
+LO contributions: 
+\begin{equation}
+M^{(1)}_T = \frac{2}{3} \, \gamma_M \, m_T  - 2\sigma_M \, \tr (m_q),
+\label{eq:MLO}
+\end{equation}
+
+NLO contributions:
+\begin{equation}
+M^{(3/2)}_T = -\frac{25 \pi}{54} g_{\Delta\Delta}^2 \Lambda_\chi \, \epsilon_\pi^3 
+- \frac{1}{3} g_{\Delta N}^2 \Lambda_\chi \, \c{F} (\epsilon_\pi,-\epsilon_\Delta,\mu)
+.\label{eq:MNLO}
+\end{equation}
+
+\text{N$^2$LO} contributions:
+\begin{eqnarray}
+M_T^{(2)} &=& (Z_T - 1) M_T^{(1)} \notag \\ 
+&& +
+    \frac{1}{\Lambda_\chi} \left\{ \frac{1}{3} t_1^M \, (m^2)_T 
+      + \frac{1}{3} t_2^M \, (m m')_T 
+      + t_3^M \, \tr(m_q^2) 
+      + \frac{1}{3} t_4^M \,  m_T  \, \tr (m_q)
+      + t_5^M \, [\tr (m_q)]^2 \right\} \notag \\
+&& -
+    \frac{2 \,\gamma_M}{\Lambda_\chi^2}  C_\pi^T \, \c{L}(\epsilon_\pi,\mu) 
+	+ \frac{6 \, \sigma_M}{\Lambda_\chi^2} \, \tr(m_q) \,
+		\c{L}(\epsilon_\pi,\mu)
+	+ \frac{1}{\Lambda_\chi^3} \left( 
+		\frac{1}{2} t^A_2  + 3 t^A_3 \right)
+		\ol{\c{L}} (\epsilon_\pi, \mu) \notag \\
+	&&	+\frac{1}{4\Lambda_\chi^3} \left[ 
+		\frac{1}{2} (t^{\tilde{A}}_2 + t_2^{vA}) 
+		+ 3 (t^{\tilde{A}}_3  + t_3^{vA}) \right]
+			\left[\ol{\c{L}} (\epsilon_\pi, \mu)
+			- \frac{1}{2} \epsilon_\pi^4 \right] \notag \\
+&& -
+    \frac{25 g_{\Delta\Delta}^2}{48 (\Lambda_\chi^2 M_B} 
+     \left[
+       {\c{L}}(\epsilon_\pi,\mu) + \frac{19}{10} \epsilon_\pi^4 \right]
+      - \frac{5 g_{\Delta N}^2}{8 (\Lambda_\chi^2 M_B}  
+       \left[
+         {\c{L}}(\epsilon_\pi,\mu) - \frac{1}{10} \epsilon_\pi^4 \right] \notag \\
+&& -  
+    \frac{25 g_{\Delta\Delta}^2 {\sigma_M}}{9 (\Lambda_\chi} \tr(m_Q)
+     \left[ \c{L}(\epsilon_\pi,\mu) + \frac{26}{15} \epsilon_\pi^4 \right]
+    - \frac{2 g_{\Delta N}^2 \sigma_M}{\Lambda_\chi^2} \tr(m_Q)
+     \c{J} (\epsilon_\pi,-\Delta,\mu)\notag \\
+&& +
+    \frac{10 g_{\Delta\Delta}^2 \gamma_M}{9 (\Lambda_\chi^2} 
+      F_\pi^T \left[ \c{L}(m_\pi,\mu) + \frac{26}{15} m_\pi^2 \right]
+      - \frac{3 g_{\Delta N}^2 }{2 (\Lambda_\chi)^2} G_\pi^T  \, \c{J} (\epsilon_\pi,-\Delta,\mu)
+\label{eq:MNNLO}
+.\end{eqnarray}
+
+The wavefunction renormalization $Z_T$ given by:
+\begin{equation}
+Z_T - 1 = - \frac{25 g_{\Delta\Delta}^2}{18 \Lambda_\chi^2} 
+           \left[ \c{L}(\epsilon_\pi,\mu) + \frac{26}{15} \epsilon_\pi^2 \right]
+          - \frac{g_{\Delta N}^2}{\Lambda_\chi^2} \c{J} (\epsilon_\pi,-\epsilon_\Delta,\mu)
+\label{eq:Z}
+.\end{equation}
+
+\begin{table}
+    \caption{The coefficients $C_\pi^T$, $F_\pi^T$, and $G_\pi^T$ in \CPT. Coefficients are
+    listed for the delta states $T$.}
+    %\begin{ruledtabular}
+    \begin{tabular}{l | c c c }
+     & $\quad \quad \quad C_\pi^T \quad \quad \quad $  
+     & $\quad \quad \quad F_\pi^T \quad \quad \quad$ 
+     & $\quad \quad \quad G_\pi^T  \quad  $ \\
+    \hline
+    $\Delta^0$    
+     & $\frac{4}{3} m_u + \frac{5}{3} m_d$  
+     & $\frac{17}{18} m_u + \frac{14}{9} m_d$ 
+     & $\frac{4}{9} \alpha_M (m_u + 2 m_d)$\\
+     \end{tabular}
+    %\end{ruledtabular}
+    \label{t:QCD-C}
+\end{table}
+
+
+\end{document}
